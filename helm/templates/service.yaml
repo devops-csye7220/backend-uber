@@ -10,6 +10,6 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
       protocol: TCP
-      name: http-8081-8081
+      name: http-3001
   selector:
     {{- include "deploy-app.selectorLabels" . | nindent 4 }}
