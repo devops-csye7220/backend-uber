@@ -15,7 +15,7 @@ node {
                                     -t sajalsood/backend-uber:\$GIT_HASH  \
                                     -f ./Dockerfile .
                         docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
-                        docker push sajal/backend-uber:\$GIT_HASH
+                        docker push sajalsood/backend-uber:\$GIT_HASH
                     """
             }
         }
