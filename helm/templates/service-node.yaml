@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "deploy-app.fullname" . }}-nodeport-service
+  labels:
+    {{- include "deploy-app.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      protocol: TCP
+      name: http-8081-8081
+  selector:
+    {{- include "deploy-app.selectorLabels" . | nindent 4 }}
