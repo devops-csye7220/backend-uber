@@ -4,10 +4,6 @@ node {
         git branch: 'main', credentialsId: 'github-sajal', url: 'https://github.com/devops-csye7220/backend-uber'
     }
 
-    stage('Build Package') {
-        sh "npm install"
-    }
-
     stage('Docker Build and Push') {
         withCredentials([string(credentialsId: 'github-sajal-token', variable: 'GITHUB_TOKEN')]){
             withCredentials([usernamePassword(usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD', credentialsId: 'sajal-dockerhub')]){
