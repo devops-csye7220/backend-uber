@@ -38,7 +38,7 @@ exports.get_all_cars = (req, res, next) => {
         })
         .catch(error => {
             // return error if there's any
-            res.status(500).json({ message: `Unable to GET all cars`, error: error });
+            res.status(500).json({ message: `Unable to GET all buses`, error: error });
         });
 }
 
@@ -60,7 +60,7 @@ exports.get_car = (req, res, next) => {
         })
         .catch(error => {
             // return error if there's any
-            res.status(500).json({ message: `Unable to GET car of id '${id}'`, error: error });
+            res.status(500).json({ message: `Unable to GET bus of id '${id}'`, error: error });
         });
 }
 
@@ -107,13 +107,13 @@ exports.create_car = (req, res, next) => {
                     location.save();
                     // wrap and return car object in response
                     const response = {
-                        message: `Created car of id '${car._id}' successfully`,
+                        message: `Created bus of id '${car._id}' successfully`,
                         car: car
                     }
                     return res.status(201).json({ response });
                 }).catch(error => {
                     // return error if there's any
-                    return res.status(500).json({ message: `Unable to get CREATE car of id '${_id}'`, error: error });
+                    return res.status(500).json({ message: `Unable to get CREATE bus of id '${_id}'`, error: error });
                 });
             });
         }
@@ -148,13 +148,13 @@ exports.delete_car = (req, res, next) => {
                 .then(car => {
                     // return success message in response
                     const response = {
-                        message: `Deleted car of id '${car._id}' successfully`
+                        message: `Deleted bus of id '${car._id}' successfully`
                     }
                     res.status(200).json({ response });
                 })
                 .catch(error => {
                     // return error if there's any
-                    res.status(500).json({ message: `Unable to DELETE car of id '${id}'`, error: error });
+                    res.status(500).json({ message: `Unable to DELETE bus of id '${id}'`, error: error });
                 });
         }
     });
@@ -194,14 +194,14 @@ exports.update_car = (req, res, next) => {
                 .then(car => {
                     // wrap and return car object in response
                     const response = {
-                        message: `Updated car of id '${car._id}' successfully`,
+                        message: `Updated bus of id '${car._id}' successfully`,
                         car: car
                     }
                     res.status(200).json({ response });
                 })
                 .catch(error => {
                     // return error if there's any
-                    res.status(500).json({ message: `Unable to UPDATE car of id '${id}'`, error: error });
+                    res.status(500).json({ message: `Unable to UPDATE bus of id '${id}'`, error: error });
                 });
         }
     });
@@ -239,7 +239,7 @@ exports.search_available_cars = (req, res, next) => {
             searchForAvailableCars(pickupTime, returnTime, cars).then(availableCars => {
                 if (availableCars.length == 0) {
                     // return error if there are no cars available
-                    return res.status(400).json({ message: "No cars are available at the moment." });
+                    return res.status(400).json({ message: "No buses are available at the moment." });
                 } else {
                     // return all available cars
                     return res.status(200).json({ availableCars: availableCars });
@@ -295,7 +295,7 @@ exports.filter_cars = (req, res, next) => {
                 .then(availableCars => {
                     if (availableCars.length == 0) {
                         // return error if there are no cars available
-                        return res.status(400).json({ message: "No cars are available with selected attributes." });
+                        return res.status(400).json({ message: "No buses are available with selected attributes." });
                     }
                     else {
                         // return all available cars
