@@ -27,7 +27,7 @@ node {
 
     stage('Set Config To AWS') {
         sh """#!/bin/bash
-                export KUBECONFIG = /var/lib/jenkins/.kube/config.yaml
+                export KUBECONFIG=/var/lib/jenkins/.kube/config.yaml
         """
     }
     stage('Install Release') {
