@@ -25,13 +25,9 @@ node {
         }
     }
 
-    stage('Set Config To AWS') {
-        sh """#!/bin/bash
-                export KUBECONFIG=/var/lib/jenkins/.kube/config.yaml
-        """
-    }
     stage('Install Release') {
         sh """#!/bin/bash
+                export KUBECONFIG=/var/lib/jenkins/.kube/config.yaml
                 LATEST_GIT_HASH=`cat latest_git_hash`
                 if helm status --namespace default backend-uber &> /dev/null; then
                     helm upgrade --namespace default --set image.tag=\${LATEST_GIT_HASH} backend-uber ./helm
