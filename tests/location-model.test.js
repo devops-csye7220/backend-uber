@@ -3,7 +3,7 @@ const LocationModel = require('../api/models/location');
 const mongoose = require('mongoose');
 const locationData = { _id: new mongoose.Types.ObjectId(), cars: [], name: "Test Garage", address: "360 Elizabeth Street, Vic, Melbourne" };
 
-const test_uri = "mongodb://localhost:27017/pp-test";
+const test_uri = "mongodb+srv://sdileepkumarreddy:Qwerty123@cluster0.j477k.mongodb.net/pp-test";
 
 describe('insert new location into collection', () => {
   beforeAll(async () => {
