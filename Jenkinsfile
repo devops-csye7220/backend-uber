@@ -25,6 +25,11 @@ node {
         }
     }
 
+    stage('Set Config To AWS') {
+        sh """#!/bin/bash
+                export KUBECONFIG = /var/lib/jenkins/.kube/config.yaml
+        """
+    }
     stage('Install Release') {
         sh """#!/bin/bash
                 LATEST_GIT_HASH=`cat latest_git_hash`
