@@ -1,5 +1,5 @@
 const app = require("../app");
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const request = require("supertest");
 
 // beforeEach((done) => {
@@ -9,6 +9,23 @@ const request = require("supertest");
 //     () => done()
 //   );
 // });
+
+beforeAll(done => {
+    done()
+  })
+
+afterAll((done) => {
+    try {
+        mongoose.connection.close()
+        done()
+    } catch (error) {
+      console.log(`
+        You did something wrong dummy!
+        ${error}
+      `);
+      throw error;
+    }
+});
 
 describe("Test /api/users", () => {
   let token = "";
