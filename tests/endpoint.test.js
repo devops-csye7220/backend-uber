@@ -1,14 +1,14 @@
 const app = require("../app");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const request = require("supertest");
 
-beforeEach((done) => {
-  mongoose.connect(
-    "mongodb+srv://sdileepkumarreddy:Qwerty123@cluster0.j477k.mongodb.net/pp-test-1",
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    () => done()
-  );
-});
+// beforeEach((done) => {
+//   mongoose.connect(
+//     "mongodb+srv://sdileepkumarreddy:Qwerty123@cluster0.j477k.mongodb.net/pp-test-1",
+//     { useNewUrlParser: true, useUnifiedTopology: true },
+//     () => done()
+//   );
+// });
 
 describe("Test /api/users", () => {
   let token = "";
