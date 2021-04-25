@@ -46,7 +46,7 @@ describe('insert new car into collection', () => {
     let bookingData = {
       _id: new mongoose.Types.ObjectId(), user: testUser._id, car: testCar._id,
       bookedtime: new Date(), pickuptime: new Date(),
-      returntime: new Date(3.6 * 10 ^ 6), cost: 15, location: testLocation._id, status: "Confirmed"
+      returntime: new Date(3.6 * 10 ^ 6), cost: 15, location: testLocation._id,destination:testLocation._id, status: "Confirmed"
     };
 
     const validBooking = new BookingModel(bookingData);

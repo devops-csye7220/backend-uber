@@ -4,7 +4,7 @@ const request = require("supertest");
 
 beforeEach((done) => {
   mongoose.connect(
-    "mongodb+srv://sdileepkumarreddy:Qwerty123@cluster0.j477k.mongodb.net/pp-test",
+    "mongodb+srv://sdileepkumarreddy:Qwerty123@cluster0.j477k.mongodb.net/pp-test-1",
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => done()
   );
@@ -18,7 +18,7 @@ describe("Test /api/users", () => {
       email: "sirasani.d@northeastern.edu",
       password: "Qwerty123",
     });
-    console.log(loginResponse.body);
+    // console.log(loginResponse.body);
     expect(loginResponse.statusCode).toBe(200);
     token = loginResponse.body.token;
   });
@@ -30,7 +30,7 @@ describe("Test /api/users", () => {
       password: "Qwerty123",
       usertype: "customer",
     });
-    console.log(newUser.body);
+    // console.log(newUser.body);
     expect(newUser.body).toHaveProperty("response");
     expect(newUser.body.response.user.lastname).toBe("xyz");
     expect(newUser.statusCode).toBe(201);
@@ -40,7 +40,7 @@ describe("Test /api/users", () => {
     const response = await request(app)
       .get("/api/users/" + userId)
       .set("Authorization", token);
-    console.log(response.body);
+    // console.log(response.body);
     expect(response.body.user.email).toBe("test@test.com");
     expect(response.statusCode).toBe(200);
   });
@@ -48,7 +48,7 @@ describe("Test /api/users", () => {
     const response = await request(app)
       .delete("/api/users/" + userId)
       .set("Authorization", token);
-    console.log(response.body);
+    // console.log(response.body);
     expect(response.statusCode).toBe(200);
   });
 });
@@ -60,13 +60,13 @@ describe("Test /api/locations", () => {
       email: "sirasani.d@northeastern.edu",
       password: "Qwerty123",
     });
-    console.log(loginResponse.body);
+    //console.log(loginResponse.body);
     expect(loginResponse.statusCode).toBe(200);
     token = loginResponse.body.token;
   });
   test("Get Locations", async () => {
     const response = await request(app).get("/api/locations/");
-    console.log(response.body);
+    //console.log(response.body);
     expect(response.statusCode).toBe(200);
   });
   test("Create new Location", async () => {
@@ -77,7 +77,7 @@ describe("Test /api/locations", () => {
         name: "Sample Address" + Date.now(),
         address: "Fenway Park, Jersey Street, Boston, MA, USA" + Date.now(),
       });
-    console.log(newLocation.body);
+    //console.log(newLocation.body);
     expect(newLocation.statusCode).toBe(200);
   });
 });
@@ -89,7 +89,7 @@ describe("Test /api/bookings", () => {
       email: "sirasani.d@northeastern.edu",
       password: "Qwerty123",
     });
-    console.log(loginResponse.body);
+    //console.log(loginResponse.body);
     expect(loginResponse.statusCode).toBe(200);
     token = loginResponse.body.token;
   });
@@ -99,14 +99,14 @@ describe("Test /api/bookings", () => {
       .post("/api/bookings")
       .set("Authorization", token)
       .send({
-        car: "6084ec21a27fe651dc3a0c96",
-        destination: "6084ab923ab0ad2dd41419ce",
-        location: "6084ab923ab0ad2dd41419ce",
+        car: "6084ac883ab0ad2dd41419d2",
+        destination: "6084f4534e7aa96024005908",
+        location: "6084f4534e7aa96024005908",
         pickupTime: "2021-05-07T00:15",
         returnTime: "2021-05-21T04:15",
-        user: "6084cef6d350f97cc46ba94a",
+        user: "6084f4514e7aa96024005907",
       });
-    console.log(newBooking.body);
+    //console.log(newBooking.body);
     expect(newBooking.statusCode).toBe(201);
   });
 
@@ -114,7 +114,7 @@ describe("Test /api/bookings", () => {
     const response = await request(app)
       .get("/api/bookings/customers/all")
       .set("Authorization", token);
-    console.log(response.body);
+    //console.log(response.body);
     expect(response.statusCode).toBe(200);
   });
 });
@@ -126,13 +126,13 @@ describe("Test /api/cars", () => {
       email: "sirasani.d@northeastern.edu",
       password: "Qwerty123",
     });
-    console.log(loginResponse.body);
+    //console.log(loginResponse.body);
     expect(loginResponse.statusCode).toBe(200);
     token = loginResponse.body.token;
   });
   test("Get Cars", async () => {
     const response = await request(app).get("/api/cars/");
-    console.log(response.body);
+    //console.log(response.body);
     expect(response.statusCode).toBe(200);
   });
 });
