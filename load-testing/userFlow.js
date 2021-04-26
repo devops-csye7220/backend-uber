@@ -3,7 +3,7 @@ import http from 'k6/http';
 
   export let options = {
    stages: [
-     { target: 70, duration: '30s' },
+     { target: 50, duration: '30s' },
    ],
     thresholds: {
       'http_req_duration': ['p(95)<500', 'p(99)<1500'],
@@ -21,7 +21,6 @@ import http from 'k6/http';
 
   const EMAIL = `sirasani.d@northeastern.edu`;  // Set your own email or `${randomString(10)}@example.com`;
   const PASSWORD = 'Qwerty123';
-//   const BASE_URL = 'http://localhost:3001/api';
   const BASE_URL = "http://a98ef851b96484aa696919c89c13425c-1666064303.us-east-1.elb.amazonaws.com/api"
 
   export function setup() {
